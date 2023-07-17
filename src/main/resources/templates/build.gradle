@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'groovy'
+    id 'maven-publish'
+    id 'com.etendoerp.gradleplugin' version 'latest.release'
+}
+
+etendo {
+    coreVersion = "[21.4.0,23.3.0)"
+}
+
+dependencies {
+    /*
+    To use Etendo in JAR format delete the Etendo section and uncomment the following line.
+    Then when executing any gradle command the core will be dynamically downloaded as a dependency.
+    Set up the credentials in gradle.properties file
+
+    implementation('com.etendoerp.platform:etendo-core:[22.1.0,23.3.0)')
+    */
+
+    //Add other dependencies bellow
+
+}

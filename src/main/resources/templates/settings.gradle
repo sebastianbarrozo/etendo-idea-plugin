@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven {
+            url 'https://maven.pkg.github.com/etendosoftware/com.etendoerp.gradleplugin'
+            credentials {
+                username "${githubUser}"
+                password "${githubToken}"
+            }
+        }
+        maven {
+            url 'https://repo.futit.cloud/repository/maven-public-snapshots'
+        }
+    }
+}
+
+// Add modules subprojects
+new File("${this.rootDir}/modules").listFiles().each {
+    if (it.directory && new File(it, 'build.gradle').exists()) {
+        include(":modules:${it.name}")
+    }
+}
+
+rootProject.name = "etendo"

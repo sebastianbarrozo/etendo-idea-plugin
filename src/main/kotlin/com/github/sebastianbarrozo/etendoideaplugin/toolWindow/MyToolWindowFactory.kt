@@ -8,9 +8,9 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.sebastianbarrozo.etendoideaplugin.MyBundle
 import com.github.sebastianbarrozo.etendoideaplugin.services.MyProjectService
 import javax.swing.JButton
+import javax.swing.JComboBox
 
 
 class MyToolWindowFactory : ToolWindowFactory {
@@ -30,14 +30,16 @@ class MyToolWindowFactory : ToolWindowFactory {
     class MyToolWindow(toolWindow: ToolWindow) {
 
         private val service = toolWindow.project.service<MyProjectService>()
+        private val project = toolWindow.project
 
         fun getContent() = JBPanel<JBPanel<*>>().apply {
-            val label = JBLabel(MyBundle.message("randomLabel", "?"))
-
+            val label = JBLabel("Task");
+            var cmb = JComboBox<String>(arrayOf("expand", "setup", "install", "smartbuild", "update.database"))
             add(label)
-            add(JButton(MyBundle.message("shuffle")).apply {
+            add(cmb)
+            add(JButton("Run").apply {
                 addActionListener {
-                    label.text = MyBundle.message("randomLabel", service.getRandomNumber())
+                    service.runGradleTask(project, cmb.selectedItem.toString())
                 }
             })
         }

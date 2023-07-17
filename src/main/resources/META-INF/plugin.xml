@@ -1,15 +1,20 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.sebastianbarrozo.etendoideaplugin</id>
-    <name>etendo-idea-plugin Template</name>
+    <name>Etendo Tools</name>
     <vendor>sebastianbarrozo</vendor>
 
-    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>com.intellij.gradle</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.sebastianbarrozo.etendoideaplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.sebastianbarrozo.etendoideaplugin.toolWindow.MyToolWindowFactory" id="Etendo Toolbar" icon="MyIcons.MyToolWindow"/>
+        <moduleBuilder
+                builderClass="com.github.sebastianbarrozo.etendoideaplugin.wizard.DemoModuleWizardStep"
+                id="DEMO_STEP"
+                order="first"/>
     </extensions>
 
     <applicationListeners>
