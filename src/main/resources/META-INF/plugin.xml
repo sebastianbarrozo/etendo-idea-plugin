@@ -9,10 +9,5 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.sebastianbarrozo.etendoideaplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.sebastianbarrozo.etendoideaplugin.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
 </idea-plugin>
